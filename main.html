@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Below this is the head for detached home.html -->
+    <!-- <title>
+        Cricksweeper.home
+    </title> -->
+    <link rel="stylesheet" href="copy.css">
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <!-- <link rel="stylesheet" href="minesweeper.css"> -->
+    <script src="copy2.js"></script>
+    <style>
+        h1{
+            padding:2px
+        }
+        #home{
+            display: block;
+        }
+        #single{
+            position:absolute;
+            display:block;
+            color:aquamarine;
+            left: 30%;
+        }
+        #multi{
+            position:absolute;
+            display:block;
+            color:aquamarine;
+            align-items: center;
+            left: 55%;
+        }
+        #tick{
+
+            display:block;
+            height: 50px;
+            width:50px;
+        }
+        
+        #number{
+
+        display:block;
+        height: 50px;
+        width:100px;
+        margin-left: 25%;
+        font-size: 50%;
+        text-align: center;
+        }
+
+        #game{
+            display:none;
+        }
+
+        #time_info{
+            display:none;
+            position:absolute;
+            text-align: center;
+            opacity:0;
+            font-size: 300%;
+            top:40%;
+            left:37%;
+        }
+
+        #bonus{
+            display:none;
+            position:absolute;
+            text-align: center;
+            opacity:0;
+            font-size: 300%;
+            top:35%;
+            left:32%;
+        }
+
+        #quit{
+            display:none;
+            position:absolute;
+            text-align:center;
+            font-size:300%;
+            word-spacing: 5px;
+            top:35%;
+            left:35%;
+            background-color: yellow;
+            padding: 7px 7px 7px 7px; 
+        }
+
+        #review{
+            display:none;
+            position:absolute;
+            text-align:center;
+            font-size:250%;
+            top:35%;
+            left:27%;
+            background-color: yellow;
+            padding: 7px 7px 7px 7px;
+        }
+
+        #comment{
+            width:90%;
+            font-size:130%;
+            height:fit-content;
+            margin-top: 5%;
+            margin-bottom:5%;
+            
+        }
+
+        .reviewbutton{
+            font-size:100%;
+        }
+
+        #end{
+            display:none;
+            /* opacity:50%; */
+        }
+        
+        #head{
+            position:absolute;
+            top:10%;
+            left:40%;
+            text-align: center;
+            font-size: 300%;
+        }
+
+        #head1{
+            position:absolute;
+            top:10%;
+            left:10%;
+            text-align: center;
+            font-size: 300%;
+        }
+
+        #man{
+            position:absolute;
+            top:20%;
+            left:15%;
+            text-align: center;
+            font-size: 300%;
+        }
+
+        #am{
+            position:absolute;
+            top:20%;
+            left:40%;
+            text-align: center;
+            font-size: 130%;
+        }
+
+        #semipro{
+            position:absolute;
+            top:29%;
+            left:55%;
+            text-align: center;
+            font-size: 145%;}
+
+        #pro{
+            position:absolute;
+            top:18%;
+            left:65%;
+            text-align: center;
+            font-size: 200%;
+        }
+
+        #score_end{
+            position:absolute;
+            top:30%;
+            left:30%;
+            font-size: 320%;
+            background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+        }
+
+        #maxscore{
+            position:absolute;
+            top:30%;
+            left:55%;
+            font-size: 320%;
+            background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+        }
+
+        .enco{
+            display:none;
+            position:absolute;
+            top:50%;
+            left:23%;
+            text-align: center;
+            font-size: 320%;
+            color:blueviolet;
+        }
+
+        #scorebar{
+            
+            position:absolute;
+            top:25%;
+            left:30%;
+            height:50px;
+            width:40%;
+            border-style: solid;
+            border-radius:10%;
+            /* background-color: greenyellow; */
+        }
+
+        #color{
+            position:relative;
+            /* top:20%;
+            left:30%; */
+            display:flex;
+            height:100%;
+            width:50%;
+            background-color:white;
+            border-style: solid;
+            border-radius:10%;
+            text-align: center;
+            padding-top:5px;
+            font-size: 200%;
+        }
+
+        #exit{
+            
+            position:absolute;
+            top:75%;
+            left:70%;  
+            font-size:300%;
+        
+        }
+
+        #retry{
+            position:absolute;
+            top:75%;
+            left:30%;
+            font-size: 300%;
+        }
+
+        
+        #Replay{
+            display:none;
+            position:absolute;
+            top:7%;
+            left:72%;
+        }
+
+        #endgame{
+            display:none;
+            position:absolute;
+            top:7%;
+            left:83%;  
+        }
+
+        #pause{
+            display:none;
+            position:absolute;
+            top:7%;
+            left:61%;  
+        }
+
+        #hint{
+            display:none;
+            position:absolute;
+            top:52%;
+            left:70%;
+            font-size: 240%;
+            background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+            
+        }
+        
+        #time{
+            /* display:none; */
+            position:absolute;
+            top:32%;
+            left:70%;
+            font-size:300%;
+            border-radius: 10px;
+            background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+        }
+
+        #mines{
+            display:none;
+            position:absolute;
+            top:50%;
+            left:7%;
+            font-size:300%;
+            border-radius: 10px;
+            background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+        }
+        #confirm {
+           display: none;
+           background-color: rgb(194, 195, 251);
+           border: 1px solid green;
+           position: absolute;
+           border-radius: 5%;
+           /* height: 150px;
+           width: 300px; */
+           left: 25%;
+           top: 30%;
+           /* padding: 6px 8px 8px; */
+           text-align: center;
+           font-size: 50px;
+        }
+
+        #score{
+           display: none;
+           background-color: rgb(194, 195, 251);
+           border: 1px solid green;
+           position: absolute;
+           /* height: 200px;
+           width: 500px; */
+           left: 23%;
+           top: 30%;
+           padding: 6px 8px 8px;
+           text-align: center;
+           font-size: 50px;
+        }
+
+        button {
+            border-radius: 12px;
+            padding: 7px 10px;
+            cursor: pointer;
+            border: 2px solid green;
+            background-color: aqua;
+            margin: 5px;
+            font-size:220%;
+            text-align: center;
+            
+
+        }
+
+            
+        body{
+            /* text-align: center; */
+            background-image: url('b1.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        #heading{
+            text-align: center;
+            color:plum ;
+            font-size:400% ;
+        }
+
+        #user{
+            text-align: center;
+            margin-top: 10%;
+            margin-left:10%;
+            margin-right:10%;
+            border-style: double;
+            font-size: 300%;
+
+        }
+        input{
+            border-radius: 12px;
+            height: 2rem;
+            padding: 7px 10px;
+            cursor: pointer;
+            border: 2px solid green;
+            background-color: aqua;
+            margin: auto;
+            text-align: center;
+            font-size: 80%;
+        }
+        
+    </style>
+    <!-- Head of Detached home.html end here -->
+    
+    
+    
+
+
+</head>
+
+<body>
+
+    
+   <!-- below part is to welcome the user -->
+
+<div id="home" >
+    <h1 id="heading">
+        Welcome to Cricksweeper
+    </h1>
+
+    
+    
+    <!-- <div>
+        <div id="confirm">
+            <p id="greet"> </p>
+            <div class = "close">
+                <button > <a href="index.html" style="text-decoration: none;">Lets Begin</a> </button> 
+                the above line was to link it with the index.html page(Back Up) 
+               <button style="font-size:120%; margin-left: 0%;" onclick="changescreen()"> Lets Begin</button> 
+               <button style="font-size:120%;" onclick = "closeConfirm()"> Wait </button>
+            </div>
+        </div>      
+
+    </div> -->
+        
+    <div id="user">
+        <form id="details">
+            <label for="name">Enter your name</label>
+            <input type="text" id="name" name="name" placeholder="Dheeraj Kurukunda" style="display:block">
+            <br>
+            <label for="size">Choose your Board size</label>
+            <input type="text" id="size" placeholder="7*7" style="display:block">
+            
+            <p style="color:aquamarine">Choose Game Mode:</p>
+            <div id="single">
+            <label for="tick">Single Player:</label>
+            <input type="checkbox" id="tick">
+            </div>
+            <div id="multi">
+                <!-- <label for="tick1">Multi Player:</label>
+                <input type="checkbox" id="tick1"> -->
+                
+                    <label for="number">Multi Player:</label>
+                    <select id="number">
+                      <option >Two</option>
+                      <option >Three</option>
+                      <option >Four</option>
+                      <option >Five</option>
+                    </select>
+                    <br><br>
+                    <!-- <input type="submit" value="Submit"> -->
+                  </form>
+                </div>
+            <br>
+            <br>
+            <button type="button" style="font-size:150%;"onclick="showConfirm()">Submit</button>
+            
+        </form>
+    </div>
+
+    <div id="confirm">
+        <p id="greet"> </p>
+        <div class = "close">
+           <!-- <button > <a href="index.html" style="text-decoration: none;">Lets Begin</a> </button> -->
+           <!-- the above line was to link it with the index.html page(Back Up) -->
+           <button style="font-size:120%; margin-left: 0%;" onclick="changescreen()"> Lets Begin</button> 
+           <button style="font-size:120%;" onclick = "closeConfirm()"> Wait </button>
+        </div>
+    </div>    
+</div>
+
+    <!-- <div id="score">
+        <p >Oops! <br> You clicked on the wrong tile.<br> Click on review to view your score card. </p>
+        <div class = "close"> -->
+           <!-- <button > <a href="index.html" style="text-decoration: none;">Lets Begin</a> </button> -->
+           <!-- the above line was to link it with the index.html page(Back Up) -->
+           <!-- <button onclick="scorewindow()"> See review</button> 
+           <button onclick = "replay()"> Wait </button>
+        </div>
+     </div>    -->
+    
+
+    <!-- Welcoming the user ends here -->
+
+
+    <!-- Below is from index.html -->
+<div id="game">
+    <div id="Stat">
+        <h1 id="mines">Mines-Left: <span id="mines-count">0</span></h1>
+        
+        <h1 id="score_disp" >Score: <span id="Score"> 10 </span> </h1>
+
+        
+
+        <h1 id="time">Time:<span id="time-lapse">0 </span><span>sec</span></h1>
+        
+        <button type="button " id="hint" onclick="hint()">Hint Button</button>
+
+        <button type="button " id="Replay" onclick="replay()">Restart</button>
+
+        <button type="button" id="endgame" onclick="endgame()">End Game</button>
+
+        <button type="button" id="pause" onclick="pause()">Pause</button>
+
+        <div id="board"></div>
+        <div id="playerboard"></div>
+        <div id="moveboard"></div>
+        <div id="playercaption">"Chance to player 0"</div>
+        <button type="button" onclick="quitgame()" id="quitgame" >Quit Game</h1>
+
+        <br>
+        <button id="flag-button">🚩</button>
+        
+        <div id="time_info">
+            HURRY UP! <br>
+            10 more sec have passed.
+        </div>
+        <div id="bonus">
+            HURRAY!! <br>
+            You have a BONUS!!
+        </div>
+
+        
+    </div>
+
+
+    <div id="score">
+        <p id="scorepara">Oops! <br> You clicked on the wrong tile.<br> Click on review to view your score card. </p>
+        <div class = "close">
+           <!-- <button > <a href="index.html" style="text-decoration: none;">Lets Begin</a> </button> -->
+           <!-- the above line was to link it with the index.html page(Back Up) -->
+           <button onclick="endgame()" style="font-size: 115%;"> See review</button> 
+           <button onclick = "replay()" style="font-size:115%"> Replay </button>
+        </div>
+    </div>  
+     
+</div>
+     
+
+
+
+<div id="end">
+    
+    <div id="main" style="display:none;">
+      <div id="scorebar">
+        <div id="color">
+
+        </div>
+      </div>
+     <h1 id="head">SCORE BAR</h1>
+     <h1 id="am">Amatuer:33.33%</h1>
+     <h1 id="semipro">Semi Pro:66.66%</h1>
+     <h1 id="pro">:90%</h1>
+     <h1 id="score_end" >Score: <span id="Score_end"> 0 </span> </h1>
+     <h1 id="maxscore" >Max-Score: <br><span id="Maxscore"> 0 </span> </h1>
+     <h1 class="enco" id="enco1">
+        GREAT GAME AMATUER! <br>
+        Play more and you will soon become semi pro!
+     </h1>
+     <h1 class="enco" id="enco2">
+        GREAT GAME Semi Pro! <br>
+        Play more and you will soon become a Pro!
+     </h1>
+     <h1 class="enco" id="enco3">
+        GREAT GAME Pro! <br>
+        Wanna play more,Click on replay button!
+     </h1>
+     <button type="button" onclick="retry()" id="retry">Retry</button>
+     <button type="button" onclick="exit()" id="exit">EXIT</button>
+
+    </div>
+
+    <div id="main1" style="display:none;">
+        <h1 id="head1">SCORE BAR</h1>
+        <h1 id="man">MAN OF THE MATCH: <span id="man1"></span></p>
+        <div id="scoreboard"></div>
+        <!-- <button type="button" onclick="retry()" id="retry">Retry</button>
+        <button type="button" onclick="exit()" id="exit">EXIT</button>
+         -->
+        
+    </div>
+      <div id="review">
+        Please give us feedback about the game on a <br>scale of 1-10;
+        <div>
+            <button type="button" class="reviewbutton">0</button>
+            <button type="button" class="reviewbutton">1</button>
+            <button type="button" class="reviewbutton">2</button>
+            <button type="button" class="reviewbutton">3</button>
+            <button type="button" class="reviewbutton">4</button>
+            <button type="button" class="reviewbutton">5</button>
+            <button type="button" class="reviewbutton">6</button>
+            <button type="button" class="reviewbutton">7</button>
+            <button type="button" class="reviewbutton">8</button>
+            <button type="button" class="reviewbutton">9</button>
+            <button type="button" class="reviewbutton">10</button>
+        </div>
+        <form>
+            <input type="text" id="comment" placeholder="Any comments">
+        </form>
+        <button type="button" onclick="closereview()" style="font-size:130%" >Done</button>
+      </div>
+
+    <div id="quit">
+        Hope to see soon!<br>
+        Are you sure to Quit.
+        <div id="quit_button">
+        <button type="button" onclick="hola()" id="b1" style="font-size:80%">Yes Quit</button>
+        <button type="button" onclick="retry()" id="b2" style="font-size:80%">RETRY</button>
+        </div>
+    </div>
+
+</div>
+    
+    
+    <!-- index.html part ends here -->
+
+
+
+    
+        <script>
+                      
+                //confirm("Hello"+name+"\n"+"Click OK to start the game");
+
+            
+            // window.onload(startgame());
+
+            var home=document.getElementById("home");
+            var game=document.getElementById("game");
+            var x = document.getElementById("details"); 
+                   
+            // var name= x.elements[0].value;
+                        
+            // var size=x.elements[1].value;
+            //console.log(size);
+
+            // var x;
+
+            var name;
+
+            var size;
+
+            var size_cor;
+            
+            var confirm=document.getElementById("confirm");
+
+            var verify=document.getElementById("tick")
+            
+            var number=document.getElementById("number")
+            function showConfirm(){
+
+                // x = document.getElementById("details"); 
+                   
+                name= document.getElementById("details").elements[0].value;
+
+            
+                size=document.getElementById("details").elements[1].value;
+
+                size_cor=size.split("*");
+
+                rows=size_cor[0];
+
+                columns=size_cor[0];
+
+                if(verify.checked==true){
+                    playerno=1;
+                }
+
+                else if(number.value=="Two"){
+                    playerno=2;
+                }
+
+                else if(number.value=="Three"){
+                    playerno=3;
+                }
+
+                else if(number.value=="Four"){
+                    playerno=4;
+                }
+
+                else if(number.value=="Five"){
+                    playerno=5;
+                }
+                
+                //confirm("Hello"+name+"\n"+"Click OK to start the game");
+                var greet = "Hello " + name + "!"+"\n" + " Click Lets Begin to start the game";
+
+                //alert(name);
+
+                document.getElementById("greet").innerHTML = greet;
+                
+                // confirm.style.display="block";
+                
+                document.getElementById("confirm").style.opacity=0;
+    document.getElementById("confirm").style.display="block";
+    var opacity=0;
+    var id=setInterval(function(){
+        if(opacity<0.95){
+            opacity+=0.1;
+            document.getElementById("confirm").style.opacity=opacity;
+            if(opacity<0.75){
+                document.getElementById("user").style.opacity=1-opacity;
+            }
+        }
+        
+        else{
+            clearInterval(id);
+        }                
+    },200)    
+            }
+
+            function closeConfirm() {
+                document.getElementById("greet").innerHTML ="";
+                
+                confirm.style.display = "none";
+
+                document.getElementById("user").style.opacity=1;
+            }
+            
+            
+            function changescreen(){
+
+                home.style.display="none";
+
+                document.getElementById("user").style.opacity=1;
+
+                confirm.style.display = "none";
+            
+                game.style.display="block";
+
+                verify.checked=false;
+
+                number.value="Two";
+
+                document.getElementById("details").elements[0].value="";
+
+                document.getElementById("details").elements[1].value="";
+
+                startgame();
+
+            }
+
+        </script>
+
+</body>
+
+</html>
